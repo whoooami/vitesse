@@ -5,6 +5,10 @@ defineOptions({
 const user = useUserStore()
 const name = ref(user.savedName)
 
+const authStore = useAuthStore();
+console.log(".authStore.token:", authStore.token);
+
+
 const router = useRouter()
 function go() {
   if (name.value)
