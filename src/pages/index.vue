@@ -15,6 +15,17 @@ function go() {
     router.push(`/hi/${encodeURIComponent(name.value)}`)
 }
 
+const initStore = useInitStore();
+const testLS = () => {
+  console.log("testLS: ", initStore.sd_id);
+  
+  initStore.setSd({id: (Math.random()*(100-1)+1), name:"a", age: 10});
+}
+
+onMounted(() => {
+  console.log("init.", initStore.sd);
+})
+
 const { t } = useI18n()
 </script>
 
@@ -49,6 +60,12 @@ const { t } = useI18n()
         @click="go"
       >
         {{ t('button.go') }}
+      </button>
+      <button
+        m-3 text-sm btn
+        @click="testLS"
+      >
+        test LS
       </button>
     </div>
   </div>
